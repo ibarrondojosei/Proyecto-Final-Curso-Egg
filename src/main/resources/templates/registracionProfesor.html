@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Registración</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/Logo1.png" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/StylesPerfilProfesor.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top"><img src="assets/img/Logo proyecto.svg" alt="..." /></a>
+            <!--*ingresar logo-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="INICIO">INICIO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="LOGIN">LOGIN</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead ">
+        <div class="container  d-flex justify-content-center">
+            <div class="col-sm-4 align-items-start">
+                <!-- Contact-->
+
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Ingrese sus Datos</h2>
+                </div>
+
+            </div>
+        </div>
+
+        <form action="Ingreso de datos">
+            <div class="container  d-flex justify-content-center">
+                <div class="col-sm-4 align-items-start">
+
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Ingrese la foto de perfil</label>
+                        <input class="form-control" type="file" id="formFile">
+                    </div>
+                    <br>
+
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre"
+                        data-sb-validations="required">
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                    <br>
+
+                    <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido"
+                        data-sb-validations="required">
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+
+
+                    <br>
+
+
+
+
+                    <input type="number" class="form-control" placeholder="DNI/ PASAPORTE" name="dni"
+                        data-sb-validations="required" />
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                    <br>
+
+                    <input type="date" class="form-control" placeholder="Fecha de nacimiento" name="fechaNacimiento"
+                        data-sb-validations="required" />
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+
+                    <br>
+
+
+
+                    <select name="provincia" id="provincias" tabindex="1" class="span" data-sb-validations="required">
+                        <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                        <option value="none">Seleccione una Provincia</option>
+                        <option value="C">Ciudad Autonoma de Buenos Aires </option>
+                        <option value="B">Buenos Aires </option>
+                        <option value="K">Catamarca </option>
+                        <option value="H">Chaco </option>
+                        <option value="U">Chubut </option>
+                        <option value="X">Cordoba </option>
+                        <option value="W">Corrientes </option>
+                        <option value="E">Entre Rios </option>
+                        <option value="P">Formosa </option>
+                        <option value="Y">Jujuy </option>
+                        <option value="L">La Pampa </option>
+                        <option value="F">La Rioja </option>
+                        <option value="M">Mendoza </option>
+                        <option value="N">Misiones </option>
+                        <option value="Q">Neuquen </option>
+                        <option value="R">Rio Negro </option>
+                        <option value="A">Salta </option>
+                        <option value="J">San Juan </option>
+                        <option value="D">San Luis </option>
+                        <option value="Z">Santa Cruz </option>
+                        <option value="S">Santa Fe </option>
+                        <option value="G">Santiago del Estero </option>
+                        <option value="V">Tierra del Fuego </option>
+                        <option value="T">Tucuman </option>
+                    </select>
+                    <br> <br>
+
+                    <input type="text" name="localidad" class="localidad" placeholder="Localidad" tabindex="3"
+                        data-sb-validations="required" /> <br />
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                    <br>
+                    <input type="text" name="calle" class="calle span12" placeholder="Dirección" tabindex="3" /> <br>
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                    <br />
+                    <br>
+
+                    <p><strong>Labor Profesional </strong></p>
+                    <input type="text" class="form-control" placeholder="Describe su labor profesional" name="dni" />
+
+                    <br>
+                    <div class="TipodeActividades">
+                        <p><strong> Actividades que se dedica </strong></p>
+                        <label for="Sobrecarga">Sobrecarga</label>
+                        <input type="checkbox" class="diabetes" name="TipodeActividades">
+                        <label for="Spinning">Spinning</label>
+                        <input type="checkbox" class="Spinning" name="TipodeActividades">
+                        <label for="Entrenamiento Funcional">Entrenamiento Funcional</label>
+                        <input type="checkbox" class="Entrenamiento Funcional" name="TipodeActividades">
+                        <label for="Crossfit">Crossfit</label>
+                        <input type="checkbox" class="Crossfit" name="TipodeActividades">
+                        <label for="Actividades de Montaña">Actividades de Montaña</label>
+                        <input type="checkbox" class="Actividades de Montaña" name="TipodeActividades">
+                        <label for="Mountain Bike">Mountain Bike</label>
+                        <input type="checkbox" class="Mountain Bike" name="TipodeActividades">
+                        <label for="Yoga">Yoga</label>
+                        <input type="checkbox" class="Yoga" name="TipodeActividades">
+                        <label for="Pilates">Pilates</label>
+                        <input type="checkbox" class="Pilates" name="TipodeActividades">
+                        <label for="Entrenamiento Deportivo">Entrenamiento Deportivo</label>
+                        <input type="checkbox" class="Entrenamiento Deportivo" name="TipodeActividades">
+                        <label for="Baile">Baile</label>
+                        <input type="checkbox" class="Baile" name="TipodeActividades">
+                        <label for="Atletismo">Atletismo</label>
+                        <input type="checkbox" class="Atletismo" name="TipodeActividades">
+                        <label for="Bienestar Físico">Bienestar Físico</label>
+                        <input type="checkbox" class="Bienestar Físico" name="TipodeActividades">
+                        <label for="Calidad de vida">Calidad de vida</label>
+                        <input type="checkbox" class="Calidad de vida" name="TipodeActividades">
+
+
+
+                    </div>
+
+
+
+                    <br>
+                    <p><strong>REGISTRACION</strong></p>
+                    <input type="email" class="form-control" placeholder="Email" id="inputEmail4">
+
+                    <br>
+
+
+                    <input type="password" class="form-control" placeholder="Contraseña" id="inputPassword4">
+
+
+                    <br>
+
+
+                    <input type="password" class="form-control" placeholder="Validar su Contraseña" id="inputPassword5">
+
+
+                </div>
+            </div>
+
+
+
+        </form>
+        <br>
+        <button type="submit" class="btn btn-warning">Registrarse</button>
+
+    </header>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>

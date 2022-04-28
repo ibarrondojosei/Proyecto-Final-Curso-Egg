@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Ingreso de datos de Usuario</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/Logo1.png"/>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/stylesLogin.css" rel="stylesheet"/>
+</head>
+<body id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}"><img src="assets/img/Logo proyecto.svg" alt="..."/></a>
+        <!--*ingresar logo-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">  <!--*ingresar menú-->
+            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link" href="INICIO">INICIO</a></li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="masthead ">
+    <div class="container  d-flex justify-content-center">
+        <div class="col-sm-10 align-items-start">
+
+            <!-- Contact-->
+
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Ingreso</h2>
+            </div>
+            <!-- * * * * * * * * * * * * * * *-->
+            <!-- * * SB Forms Contact Form * *-->
+            <!-- * * * * * * * * * * * * * * *-->
+            <!-- This form is pre-integrated with SB Forms.-->
+            <!-- To make this form functional, sign up at-->
+            <!-- https://startbootstrap.com/solution/contact-forms-->
+            <!-- to get an API token!-->
+
+            <form id="contactForm" data-sb-form-api-token="API_TOKEN" th:action="@{/logincheck }" method="post">
+                <div class="row align-items-stretch mb-5">
+                    <div class="col-md">
+
+                       <p th:if="${error != null}" th:text="${error}" style="color: red; border-color: white" ></p>
+
+                       <p th:if="${logout != null}" th:text="${logout}" style="color: white; border-color: white" ></p>
+
+                        <div class="form-group">
+                            <!-- Email address input-->
+                            <input class="form-control" id="email" type="email" placeholder="Ingrese su mail *"
+                                   data-sb-validations="required,email" name="username"/>
+                            <div class="invalid-feedback" data-sb-feedback="email:required">Debe ingresar su email.
+                            </div>
+                            <div class="invalid-feedback" data-sb-feedback="email:email">su email no es válido.</div>
+                        </div>
+                        <br>
+
+                        <div class="mb-3">
+                            <!--Password-->
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                  name="password" placeholder="Ingrese su contraseña*" data-sb-validations="required,password">
+                            <div class="invalid-feedback" data-sb-feedback="password:required">Debe ingresar una
+                                contraseña.
+                            </div>
+                            <div class="invalid-feedback" data-sb-feedback="password:required">Su password no es
+                                válido.
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><strong>INGRESAR</strong></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</header>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+</html>

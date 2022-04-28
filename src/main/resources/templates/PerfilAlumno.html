@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Perfil - Global Fitpro</title>
+  <!-- Icono Pestaña navegador-->
+  <link rel="icon" type="image/x-icon" href="assets/Logo proyecto transparente.svg" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="/css/stylesPerfil.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+  <!-- Navigation-->
+  <nav class="border border-warning navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#page-top"><img src="/assets/img/Logo proyecto.svg" alt="..." /></a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars ms-1"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ms-auto">
+
+          <img th:src="@{'/uploads/' + ${alumno.foto}}" th:alt="${alumno.foto}" style="max-width:250%;max-height:250%;"
+            class="mx-auto rounded-circle" id="imgPerfil" />
+
+          <div class="container-fluid">
+
+            <li class="nav-item">
+              <a class="nav-link" href="#portfolio" th:text="${alumno.nombre} + ' ' + ${alumno.apellido}"></a>
+              <!--   <a class="nav-link" href="#portfolio" th:text="${alumno.id}"></a> -->
+              <a class="button btn-sm" th:href="@{/alumno/panelControl/} + ${alumno.id}">Volver</a>
+              <a class="button btn-sm" th:href="@{/index}">salir</a>
+
+            </li>
+
+          </div>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Masthead-->
+  <header class="masthead">
+    <br>
+    <h4>Mi perfil</h4>
+
+    <input hidden th:field="*{id}">
+
+    <div class="container d-flex justify-content-center">
+      <div class="col-sm-4 align-items-start">
+        <ul class="list-group list-group-flush">
+          <br>
+          <input hidden th:field="*{id}">
+
+          <img th:src="@{'/uploads/' + ${alumno.foto}}" th:alt="${alumno.foto}" style="max-width:250%;max-height:250%;"
+            class="mx-auto rounded-circle" id="imgPerfil" />
+          <br>
+
+          <h6>Nombre</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.nombre}"></li>
+          <h6>Apellido</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.apellido}"></li>
+          <h6>DNI</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.dni}"></li>
+          <h6>Teléfono</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.telefono}"></li>
+          <h6>Fecha de Nacimiento</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.fechaNacimiento}"></li>
+          <h6>Mail</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.email}"></li>
+          <h6>Localidad</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.localidad.nombre}"></li>
+          <h6>Provincia</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.provincia.nombre}"></li>
+          <h6>Peso</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.peso}"></li>
+          <h6>Talla/Altura</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.talla}"></li>
+          <h6>IMC -Indice de masa corporal-</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.imc}"></li>
+          <h6>Horas semanales de actividad física</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.actividadFisicaHoras}"></li>
+          <h6>Alimentación</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.alimentacion}"></li>
+          <h6>Horas de sueño</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.cantHorasSuenio}"></li>
+          <!-- <h6>Antecedentes Familiares</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.antecedentesFamiliares"></li> -->
+          <h6>accidentes</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.accidentes}"></li>
+          <h6>obs.</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.ObsAccidentes}"></li>
+          <h6>operaciones</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.operaciones}"></li>
+          <h6>obs.</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.ObsOperaciones}"></li>
+          <h6>enfermedades</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.enfermedades}"></li>
+          <h6>obs.</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.ObsEnfermedades}"></li>
+          <h6>limitaciones</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.limitaciones}"></li>
+          <h6>obs.</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.ObsLimitaciones}"></li>
+          <h6>alergias</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.alergias}"></li>
+          <h6>obs.</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.ObsAlergias}"></li>
+          <h6>medicamentos</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.medicamentos}"></li>
+          <h6>obs.</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.anamnesis.ObsMedicamentos}"></li>
+          <h6>email</h6>
+          <li class="list-group-item bg-transparent text-dark" th:text="${alumno.email}"></li>
+        </ul>
+        <br />
+        <a type="button" class="btn btn-warning text-dark" th:href="@{/alumno/modificar/} + ${alumno.id}">Modificar
+          Datos</a>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+  <!-- * *                               SB Forms JS                               * *-->
+  <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>

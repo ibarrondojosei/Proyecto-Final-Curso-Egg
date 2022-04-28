@@ -1,0 +1,15 @@
+git branch -a			-	muestra todas las ramas
+
+git checkout -b feature/alejandro	-	me voy a mi rama
+
+git branch				-	
+
+git status 				-	en rojo, cambios que voy a subir
+
+git add  .				-	preparando para subir
+
+git status				-	en verde listo para comitiar
+
+git commit -m "ssssss"		-	comitiando con detalle de commit
+
+git push origin feature/alejandro -f	-	para pushear/ subir cambios a mi rama

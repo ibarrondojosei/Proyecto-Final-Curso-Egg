@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head th:replace="plantillas/layout::head"></head>
+
+<body>
+    <header th:replace="plantillas/layout::navbar"></header>
+
+    <div class="container">
+        <h1 th:text="${titulo}"></h1>
+        <br>
+
+        <form th:action="@{/anamnesis/crear2}" th:object="${ananmesis}" method="post" class="form ">
+
+            <p th:if="${error!=null}" th:text="${error}" style="color:red">mensaje de error</p>
+
+            <input type="hidden" th:field="*{id}" />
+
+            <!--------------- A N A N M N E S I S  ------------------------>
+
+            <!-- 
+                        
+            private Double imc; //peso / talla*2                    
+            private HorasSemanales horasSemanales;            
+            private Alimentacion alimentacion;           
+            private Suenio suenio;            
+            private String humor;           
+            private String observaciones;        
+            private List<AntecedentesFamiliares> antecedentesFamiliares;
+
+                <label for="direccion" class="form-label">Direccion:</label>
+            <input type="text" th:field="*{direccion}" id="direccion" class="form-control w-50" />
+            <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Error direccion</span>
+            <br><br>
+
+            <label for="localidad">Localidad :</label>
+            <select class="form-select" aria-label="Default select example" th:field="*{localidad.id}" name="id">
+                <option th:each="localidad: ${localidades}" th:text="${localidad.nombre}" th:value="${localidad.id}">
+                    Listado</option>
+            </select>
+            <span th:if="${#fields.hasErrors('localidad')}" th:errors="*{localidad}">Error localidad</span>
+            <br><br>
+            -->
+
+            <label for="peso" class="form-label">Peso:</label>
+            <input type="number" th:field="*{peso}" id="peso" class="form-control w-50" />
+            <span th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}"></span>
+
+            <label for="talla" class="form-label">Talla:</label>
+            <input type="number" th:field="*{talla}" id="talla" class="form-control w-50" />
+            <span th:if="${#fields.hasErrors('talla')}" th:errors="*{talla}"></span>
+
+            <label for="humor" class="form-label">Humor:</label>
+            <input type="text" th:field="*{humor}" id="humor" class="form-control w-50" />
+
+            <label for="observaciones" class="form-label">Observaciones:</label>
+            <input type="text" th:field="*{observaciones}" id="observaciones" class="form-control w-50" />
+
+            <!--
+                  
+            @OneToOne
+            private Foto fotoPerfil;
+                
+            @OneToOne
+            private Profesor profesor;
+        
+            @OneToMany
+            private List<FeedBack> feedBack; -->
+
+            <!--span th:if="${#fields.hasErrors('editorial')}" th:errors="*{editorial}">Error editorial</span-->
+
+            <br />
+            <button type="submit" class="btn btn-success">Guardar</button>
+            
+            <a class="btn btn-info" th:href="@{/}">Volver</a>
+
+        </form>
+    </div>
+    <footer th:replace="plantillas/layout::footer"></footer>
+</body>
+
+</html>

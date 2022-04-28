@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Perfil - Global Fitpro</title>
+    <!-- Icono Pestaña navegador-->
+    <link rel="icon" type="image/x-icon" href="assets/Logo proyecto transparente.svg" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/stylesPerfilProfesor.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="border border-warning navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top"><img src="/assets/img/Logo proyecto.svg" alt="..." /></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto">
+                    <img th:src="@{/assets/img/team/1.jpg}" class="mx-auto rounded-circle" alt="..." id="imgPerfil" />
+                    <div class="container-fluid">
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                th:text="${session.profesorsession.nombre + ' ' + session.profesorsession.apellido}"></a>
+                            <a class="button btn-sm" href="javascript: history.go(-1)">Volver</a>
+                            <a class="button btn-sm" th:href="@{/logout}">Salir</a>
+                        </li>
+                    </div>
+                    <br /><br /><br />
+
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Masthead-->
+    <header class="masthead">
+        <br>
+        <h4>Mi perfil</h4>
+
+        <div class="container d-flex justify-content-center">
+            <div class="col-sm-4 align-items-start">
+
+                <ul class="list-group list-group-flush">
+
+                    <input hidden th:field="*{id}">
+
+                    <img th:if="${profesor.fotoPerfil == null}" src="/assets/img/team/1.jpg"
+                        class="mx-auto rounded-circle" style="max-height: 10rem; border-radius: 6rem" alt="..."
+                        id="imgPerfil" />
+
+                    <img img th:if="${profesor.fotoPerfil != null}" th:src="@{'/uploads/' + ${profesor.fotoPerfil}}"
+                        th:alt="${profesor.fotoPerfil}" style="max-width:250%;max-height:250%;"
+                        class="mx-auto rounded-circle" id="imgPerfil" />
+
+                    <h6>Nombre</h6>
+                    <li class="list-group-item bg-transparent text-dark" th:text="${profesor.nombre}"></li>
+                    <h6>Apellido</h6>
+                    <li class="list-group-item bg-transparent text-dark" th:text="${profesor.apellido}"></li>
+                    <h6>DNI</h6>
+                    <li class="list-group-item bg-transparent text-dark" th:text="${profesor.dni}"></li>
+                    <h6>Teléfono</h6>
+                    <li class="list-group-item bg-transparent text-dark" th:text="${profesor.telefono}"></li>
+                    <h6>Fecha de Nacimiento</h6>
+                    <li class="list-group-item bg-transparent text-dark" th:text="${profesor.fechaNacimiento}"></li>
+                    <h6>Mail</h6>
+                    <li class="list-group-item bg-transparent text-dark" th:text="${profesor.email}"></li>
+                    <h6>Dirección</h6>
+                    <li class="list-group-item bg-transparent text-dark" th:text="${profesor.direccion}"></li>
+                    <h6>Localidad</h6>
+                    <li class="list-group-item bg-transparent text-dark" th:text="${profesor.localidad.nombre}"></li>
+                    <h6>Provincia</h6>
+                    <li class="list-group-item bg-transparent text-dark" th:text="${profesor.provincia.nombre}"></li>
+                    <h6>Título Profesional</h6>
+                    <li class="list-group-item bg-transparent text-dark" th:text="${profesor.profesionEnum.name()}">And
+                        a
+                        fifth one
+                    </li>
+
+                    <h6>Actividad</h6>
+                    <li class="list-group-item bg-transparent text-dark" th:text="${profesor.actividadProfesor.nombre}">
+                    </li>
+
+                    <h6>Descripción Actividad</h6>
+                    <li class="list-group-item bg-transparent text-dark" th:text="${profesor.descripcionActividad}">
+                    </li>
+
+                    <!--empieza carousel-->
+
+                    <!-- <div class="slyder2">
+                        <div class="slideshow-container2">
+
+                            <div class="mySlides2 fade2" th:each="listaFotos,contador: ${profesor.fotos}">
+                                <img th:src="@{'/uploads/' + ${listaFotos} }"
+                                    th:alt="foto + ' No.- ' + ${contador.count}"
+                                    style="max-width:100%;max-height:100%;">
+                            </div>
+
+                            <a class="prev2" onclick="plusSlides(-1)">&#10094;</a>
+                            <a class="next2" onclick="plusSlides(1)">&#10095;</a>
+                        </div>
+
+                    </div> -->
+
+                    <!--termina my carousel-->
+
+                </ul>
+                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!--                    <div class="carousel-item active" th:each="fotos : ${fotosPerfil}">-->
+                        <!--                        <img th:src="@{fotos.getContenido()}" >-->
+                        <!--                    </div>-->
+
+                        <!--                    <div class="carousel-item active" th:each="${foto  :${aux}">-->
+                        <!--                        <img th:src="${foto}" >-->
+                        <!--                    </div>-->
+
+                        <!--&lt;!&ndash;                    <div class="carousel-item">&ndash;&gt;-->
+                        <!--&lt;!&ndash;                        <img th:src="@{/assets/img/Logo proyecto.svg}" >&ndash;&gt;-->
+                        <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+                        <!--                    <div class="carousel-item">-->
+                        <!--                        <img th:src="@{/foto/profesor-pics/} + ${profesor.id}"  >-->
+                        <!--                    </div>-->
+                        <!--                </div>-->
+                        <div th:each="prof : ${profesor.fotos}">
+                            <img th:src="@{/foto/foto-encontrar} + '?id=' + ${prof}">
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <br />
+
+                    <a type="button" th:href="@{/profesor/editar-profesor/} + ${profesor.id}"
+                        class="btn btn-warning text-dark">Modificar
+                        Datos</a>
+                </div>
+            </div>
+    </header>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>

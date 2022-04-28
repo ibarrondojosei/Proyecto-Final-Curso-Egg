@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/5b5fa05dbf.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="jumbotron">
+            <h1 style="text-align: center;">Enviar e-mail</h1>
+        </div>
+
+        <form method="POST" th:action="@{/email/enviarMail}" id="emailForm" class="container">
+            <div class="form-group">
+                <label>Alumno Nombre</label>
+                <h3 th:text="${alumno.nombre} + ' ' + ${alumno.apellido}"></h3>
+                
+                <label>Profesor@ Nombre</label>
+                <h3 th:text="${profesor.nombre} + ' ' + ${profesor.apellido}"></h3>
+               
+                <label>Asunto</label>
+                <h3 th:text="${subject}"></h3>
+                
+                <label>Mensaje</label>
+                <h3 th:text="${body}"></h3>
+            </div>
+            <div style="margin-bottom: 10px">
+                <a type="button" class="btn btn-outline-info" th:href="@{/mail/enviarMail/ (profesorId=${profesor.id} , alumnoId=${alumno.id} )}" >Enviar Mail</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+</body>

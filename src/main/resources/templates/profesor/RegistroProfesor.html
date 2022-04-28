@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Registración</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/Logo1.png" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/stylesPerfilProfesor.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="border border-warning navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top"><img th:src="@{/assets/img/Logo proyecto.svg}" alt="..." /></a>
+            <!--*ingresar logo-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="INICIO">INICIO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="LOGIN">LOGIN</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="masthead ">
+        <br>
+        <div class="container  d-flex justify-content-center">
+            <div class="col-sm-4 align-items-start">
+                <!-- Contact-->
+
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Ingrese sus Datos</h2>
+                </div>
+
+            </div>
+        </div>
+
+        <form th:action="@{/profesor/guardar-profesor}" th:object="${profesor}" method="post"
+            enctype="multipart/form-data">
+
+            <div class="container  d-flex justify-content-center">
+                <div class="col-sm-7 align-items-start">
+
+                    <input type="hidden" th:field="*{id}" th:value="${profesor.id}">
+
+                    <label for="foto">Ingrese Foto de Perfil</label>
+                    <input type="file" id="foto" class="form-control" name="file">
+                    <br>
+
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" th:field="*{nombre}" class="form-control" id="nombre"
+                            placeholder="Nombre del Profesor">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
+                            th:errors="*{nombre}"></small>
+                    </div>
+                    <br>
+
+                    <div class="mb-3">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" th:field="*{apellido}" class="form-control" id="apellido"
+                            placeholder="Apellido del Profesor">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}"
+                            th:errors="*{apellido}"></small>
+                    </div>
+                    <br>
+
+                    <div class="mb-3">
+                        <label for="dni" class="form-label">DNI / Pasaporte</label>
+                        <input type="text" th:field="*{dni}" class="form-control" id="dni"
+                            placeholder="DNI / Pasaporte del Profesor">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('dni')}"
+                            th:errors="*{dni}"></small>
+                    </div>
+                    <br>
+
+                    <div class="mb-3">
+                        <label for="nacimiento" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" th:field="*{fechaNacimiento}" class="form-control" id="nacimiento"
+                            placeholder="Fecha de nacimiento">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaNacimiento')}"
+                            th:errors="*{fechaNacimiento}"></small>
+                    </div>
+                    <br>
+
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Telefono comunicacion</label>
+                        <input type="text" th:field="*{telefono}" class="form-control" id="telefono"
+                            placeholder="Telefono del profesor">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}"
+                            th:errors="*{telefono}"></small>
+                    </div>
+                    <br>
+
+                    <div class="mb-3">
+                        <label for="direccion" class="form-label">Direccion</label>
+                        <input type="text" th:field="*{direccion}" class="form-control" id="direccion"
+                            placeholder="Direccion o domicilio">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('direccion')}"
+                            th:errors="*{direccion}"></small>
+                    </div>
+                    <br>
+
+
+                    <label for="localidad" class="form-label">Selecciona tu Localidad</label>
+                    <select class="form-select" th:field="*{localidad}" id="localidad">
+                        <option th:each="localidad : ${localidades}" th:value="${localidad.id}"
+                            th:text="${localidad.nombre}"></option>
+                    </select>
+                    <br>
+
+                    <label for="provincia" class="form-label">Selecciona tu Provincia</label>
+                    <select class="form-select" th:field="*{provincia}" id="provincia">
+                        <option th:each="provincia : ${provincias}" th:value="${provincia.id}"
+                            th:text="${provincia.nombre}"></option>
+                    </select>
+                    <br>
+                    <br>
+
+                    <h4>Labor Profesional</h4>
+                    <br>
+
+                    <div class="mb-3">
+                        <label for="profesion" class="form-label">Profesion Ejercida</label>
+                        <select class="form-select" th:field="*{profesionEnum}" id="profesion">
+                            <option th:each="profesion : ${profesionesEnum}" th:text="${profesion.toString()}"
+                                th:value="${profesion}"></option>
+                        </select>
+                    </div>
+                    <br />
+
+                    <p><strong> Actividades que se dedica </strong></p>
+                    <br>
+
+                    <div class="mb-3">
+                        <input th:each="actividades :${actividades}" type="checkbox"
+                            th:field="*{actividadProfesor.nombre}" th:text="${actividades.name()} + ' '"
+                            th:value="${actividades}">
+                    </div>
+                    <br>
+
+                    <div class="mb-3">
+                        <label class="form-label">Descripcion De Actividad</label>
+                        <div class="form-floating">
+                            <textarea class="form-control" th:field="*{descripcionActividad}"
+                                placeholder="Escriba brevemente una descripcion en lo que haria o ayudaria a algun usuario o Alumno"
+                                id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Escriba brevemente una descripcion en lo que haria o ayudaria
+                                a algun usuario o Alumno</label>
+
+                            <small class="form-text text-danger" th:if="${#fields.hasErrors('descripcionActividad')}"
+                                th:errors="*{descripcionActividad}"></small>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        
+                        <label for="fotosProfesor" th:text="'Ingrese si desea algunas fotos para su perfil'"></label>
+                       
+                        <input type='file' multiple name='files' id="fotosProfesor" class="form-control"  />
+                    </div>
+                    <br>
+                    
+                    <p><strong>REGISTRO</strong></p>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Comunicacion</label>
+                        <input type="email" th:field="*{email}" class="form-control" id="email"
+                            placeholder="Email de Comunicacion">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
+                            th:errors="*{email}"></small>
+                    </div>
+                    <br>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" th:field="*{password}" class="form-control" id="password"
+                            placeholder="*****">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('password')}"
+                            th:errors="*{password}"></small>
+                    </div>
+                    <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
+
+                    <br>
+                    <div class="mb-3">
+                        <label for="password2" class="form-label">Ingresa nuevamente la contraseña</label>
+                        <input type="password" th:field="*{password2}" class="form-control" id="password2"
+                            placeholder="*****">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('password2')}"
+                            th:errors="*{password2}"></small>
+                    </div>
+                    <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
+
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Registrarse</button>
+
+        </form>
+        <br>
+
+    </header>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>

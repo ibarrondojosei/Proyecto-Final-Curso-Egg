@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+</html>>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Registración</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/Logo1.png" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="/css/stylesPerfil.css" />
+    <link rel="stylesheet" href="/css/stylesSi_no.css">
+
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top"><img src="/assets/img/Logo proyecto.svg" alt="..." /></a>
+            <!--*ingresar logo-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="INICIO">INICIO </a></li>
+                    <li class="nav-item"><a class="nav-link" href="LOGIN">LOGIN</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="masthead ">
+        <div class="container  d-flex justify-content-center">
+            <div class="col-sm-4 align-items-start">
+
+
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Ingrese sus Datos</h2>
+                </div>
+
+            </div>
+        </div>
+
+        <form th:action="@{/alumno/guardar}" method="post" th:object="${alumno}" enctype="multipart/form-data">
+
+            <input hidden th:field="*{id}">
+
+            <div class="container  d-flex justify-content-center">
+                <div class="col-sm-4 align-items-start">
+
+                    <label for=""> *******************</label>
+                    <br>
+
+                    <div th:text="${foto}">$$$</div>
+                    <div th:text="*{foto}">***</div>
+                    <div th:text="${nombre}"></div>
+                    <label for="" th:text="${foto}">++++++++++++++++</label>
+                    <label for=""> --------------------</label>
+                    <br>
+
+                    <label for="foto" class="form-label">Ingrese la foto de perfil</label>
+                    <div class="mb-3">
+                        <input type="file" class="form-control" name="file" id="foto">
+                    </div>
+                    <br>
+
+                    <label class="titulo" for="nombre">Nombre<span class="requerido"></span></label>
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre"
+                        data-sb-validations="required" th:field="*{nombre}">
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                    <br>
+
+                    <label class="titulo" for="apellido">Apellido <span class="requerido"></span></label>
+                    <input type="text" class="form-control" placeholder="Apellido" aria-label="Apellido"
+                        data-sb-validations="required" th:field="*{apellido}">
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                    <br>
+
+                    <label class="titulo" for="dni">D.N.I. <span class="requerido"></span></label>
+                    <input type="number" class="form-control" placeholder="DNI/ PASAPORTE" name="dni"
+                        data-sb-validations="required" th:field="*{dni}" />
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                    <br>
+
+                    <label class="titulo" for="fechaNacimiento">Fecha de Nacimiento <span
+                            class="requerido"></span></label>
+                    <input type="date" class="form-control" placeholder="Fecha de nacimiento" name="fechaNacimiento"
+                        data-sb-validations="required" th:field="*{fechaNacimiento}" />
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                    <br>
+
+                    <label class="titulo" for="localidad">Localidad <span class="requerido"></span></label><br>
+                    <select name="localidad" id="localidades" tabindex="1" class="span" data-sb-validations="required">
+                        <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                        <option th:each="localidad : ${localidades}" th:text="${localidad.nombre}"
+                            th:value="${localidad.id}">Seleccione una Localidad</option>
+
+                    </select>
+                    <br><br>
+
+                    <label class="titulo" for="provincia">Provincia <span class="requerido"></span></label>
+                    <br>
+                    <select name="provincia" id="provincias" tabindex="1" class="span" data-sb-validations="required">
+                        <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                        <option th:each="provincia : ${provincias}" th:text="${provincia.nombre}"
+                            th:value="${provincia.id}">Seleccione una Provincia</option>
+
+                    </select>
+                    <br><br>
+
+                    <label class="titulo" for="direccion">Direccion <span class="requerido"></span></label>
+                    <br>
+                    <input type="text" name="calle" class="calle span12" placeholder="Dirección" tabindex="3"
+                        th:field="*{direccion}"> <br>
+                    <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                    <br>
+
+                    <div>
+                        <span>
+                            <label class="titulo" for="telefonofijo">Teléfono <span
+                                    class="requerido"></span></label><br>
+                            <input type="number" id="telefono" name="telefono" placeholder="Ingrese Telefono" value=""
+                                th:field="*{telefono}">
+                        </span>
+                    </div>
+                    <br>
+
+                    <p> <strong> Datos de Salud Actual </strong></p>
+                    <div class="peso">
+                        <label class="titulo" for="peso">Peso <span class="requerido"></span></label>
+                        <input type="number" class="peso" placeholder="Peso kg " aria-label="Peso"
+                            data-sb-validations="required" th:field="${alumno.anamnesis.peso}">
+                        <label for="peso">kg.</label> <br>
+                        <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                    </div>
+                    <br>
+
+                    <div class="talla">
+                        <label class="titulo" for="talla">Talla <span class="requerido"></span></label>
+                        <input type="number" class="talla" placeholder="Talla cm " aria-label="Talla"
+                            data-sb-validations="required" th:field="${alumno.anamnesis.talla}">
+                        <label for="talla">cm.</label> <br>
+                        <div class="invalid-feedback" data-sb-feedback="message:required">Requiere llenar campo</div>
+                    </div>
+                    <br>
+
+                    <div class="Horas de sueno">
+                        <p> <strong> Sueño </strong> </p>
+
+                        <input type="number" class="horasdesueno" placeholder="Horas de sueño " aria-label="horadesueno"
+                            th:field="${alumno.anamnesis.cantHorasSuenio}">
+                        <label for="horas">Hrs.</label> <br>
+                        <label for="suenonormal"> Normal</label>
+                        <input type="radio" class="sueno" th:field="${alumno.anamnesis.suenio}" th:value="'NORMAL'">
+                        <label for="suenotranquilo"> Tranquilo</label>
+                        <input type="radio" class="sueno" th:field="${alumno.anamnesis.suenio}" th:value="'TRANQUILO'">
+                        <label for="suenoinquieto"> Inquieto</label>
+                        <input type="radio" class="sueno" th:field="${alumno.anamnesis.suenio}" th:value="'INQUIETO'">
+
+                    </div>
+                    </br>
+
+                    <div class="Horas de actividadFisica">
+                        <p> <strong> Actividad Fisica </strong> </p>
+                        <input type="number" class="actividadFisicaHoras"
+                            placeholder="Horas de Actividad fisica Semanal " aria-label="horadesueno"
+                            th:field="${alumno.anamnesis.actividadFisicaHoras}">
+                        <label for="horas">Hrs.</label> <br>
+                    </div>
+                    </br>
+
+                    <div class="alimentacion" data-sb-validations="required">
+                        <p> <strong> Alimentación </strong> </p>
+
+                        <label for="alimentacionbuena"> Buena</label>
+                        <input type="radio" th:field="${alumno.anamnesis.alimentacion}" th:value="'BUENA'"
+                            class="alimentacion">
+
+                        <label for="alimentacionregular"> Regular</label>
+                        <input type="radio" th:field="${alumno.anamnesis.alimentacion}" th:value="'REGULAR'"
+                            class="alimentacion">
+
+                        <label for="alimentacionmala"> Mala</label>
+                        <input type="radio" th:field="${alumno.anamnesis.alimentacion}" th:value="'MALA'"
+                            class="alimentacion">
+                        <br>
+
+                        <label for="plan de nutricion">Realiza plan de alimentacion</label>
+                        <select name="plan de nutricion" id="plandenutricion" th:field="${alumno.anamnesis.nutricion}">
+                            <option th:each="SINO : ${sino}" th:text="${SINO.toString()}" th:value="${SINO}"></option>
+
+                            <textarea class="form-control" id="message" placeholder="¿Cuál/es?"
+                                data-sb-validations="required" th:field="${alumno.anamnesis.ObsNutricion}"></textarea>
+                        </select>
+
+                    </div>
+                    <br>
+                    <br>
+
+                    <!-- ------cominezo ---- prueba si/no jorge-------------------- -->
+
+                    <div class="observaciones">
+                        <label for="anamnesis"> ---------------- Plan Nutricion? -----------------:</label>
+                        <select class="form-select" id="selector" aria-label="Default select example"
+                            th:field="${alumno.anamnesis.nutricion}" name="nutricion">
+                            <option value="">Opcion</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <textarea class="novisible form-control" id="pasoParametroSI/NO" type="text"
+                            placeholder="¿Cuál/es?" data-sb-validations="required"
+                            th:field="${alumno.anamnesis.ObsNutricion}"></textarea>
+                    </div>
+
+
+                    <div class="observaciones">
+                        <label for="anamnesis"> ---------------- Plan Nutricion? -----------------:</label>
+                        <select class="form-select" id="selector" aria-label="Default select example"
+                            th:field="${alumno.anamnesis.nutricion}" name="nutricion">
+                            <option value="">Opcion</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <textarea class="novisible form-control" id="pasoParametroSI/NO" type="text"
+                            placeholder="¿Cuál/es?" data-sb-validations="required"
+                            th:field="${alumno.anamnesis.ObsNutricion}"></textarea>
+                    </div>
+                    <!-- ------fin ---- prueba si/no jorge-------------------- -->
+
+                    <p> <strong> Antecedentes Personales </strong></p>
+
+                    <div class="Antecedentespersonales">
+
+                        <label for="Accidentes">Accidentes</label>
+                        <select class="form-select" id="selector" aria-label="Default select example"
+                            th:field="${alumno.anamnesis.accidentes}" name="accidentes">
+                            <option value="">Opcion</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <textarea class="novisible form-control" id="pasoParametroSI/NO" type="text"
+                            placeholder="¿Cuál/es?" data-sb-validations="required"
+                            th:field="${alumno.anamnesis.ObsAccidentes}"></textarea>
+                        <br>
+                        <br>
+
+                        <label for="operaciones">Operaciones</label>
+                        <select class="form-select" id="selector" aria-label="Default select example"
+                            th:field="${alumno.anamnesis.operaciones}" name="operaciones">
+                            <option value="">Opcion</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <textarea class="novisible form-control" id="pasoParametroSI/NO" type="text"
+                            placeholder="¿Cuál/es?" data-sb-validations="required"
+                            th:field="${alumno.anamnesis.ObsOperaciones}"></textarea>
+                        <br>
+                        <br>
+
+                        <label for="enfermedades">Enfermedades</label>
+                        <select class="form-select" id="selector" aria-label="Default select example"
+                            th:field="${alumno.anamnesis.enfermedades}" name="enfermedades">
+                            <option value="">Opcion</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <textarea class="novisible form-control" id="pasoParametroSI/NO" type="text"
+                            placeholder="¿Cuál/es?" data-sb-validations="required"
+                            th:field="${alumno.anamnesis.ObsEnfermedades}"></textarea>
+                        <br>
+                        <br>
+
+                        <label for="limitaciones">Limitaciones Fisicas</label>
+                        <select class="form-select" id="selector" aria-label="Default select example"
+                            th:field="${alumno.anamnesis.limitaciones}" name="limitaciones">
+                            <option value="">Opcion</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <textarea class="novisible form-control" id="pasoParametroSI/NO" type="text"
+                            placeholder="¿Cuál/es?" data-sb-validations="required"
+                            th:field="${alumno.anamnesis.ObsLimitaciones}"></textarea>
+                        <br>
+                        <br>
+
+                        <label for="alergias">Alergias</label>
+                        <select class="form-select" id="selector" aria-label="Default select example"
+                            th:field="${alumno.anamnesis.alergias}" name="alergias">
+                            <option value="">Opcion</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <textarea class="novisible form-control" id="pasoParametroSI/NO" type="text"
+                            placeholder="¿Cuál/es?" data-sb-validations="required"
+                            th:field="${alumno.anamnesis.ObsAlergias}"></textarea>
+                        <br>
+                        <br>
+
+                        <label for="medicamentos">Medicamentos</label>
+                        <select class="form-select" id="selector" aria-label="Default select example"
+                            th:field="${alumno.anamnesis.medicamentos}" name="medicamentos">
+                            <option value="">Opcion</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <textarea class="novisible form-control" id="pasoParametroSI/NO" type="text"
+                            placeholder="¿Cuál/es?" data-sb-validations="required"
+                            th:field="${alumno.anamnesis.ObsMedicamentos}"></textarea>
+                        <br>
+                        <br>
+
+                    </div>
+                    </br>
+
+                    <div class="Antecedentesfamiliares">
+                        <p><strong> Antecedentes Familiares </strong></p>
+                        <label for="diabetes">Diabetes</label>
+                        <input type="checkbox" th:field="${alumno.anamnesis.antecedentesFamiliares}"
+                            th:value="'DIABETES'" class="diabetes">
+
+                        <label for="obesidad">Obesidad</label>
+                        <input type="checkbox" th:field="${alumno.anamnesis.antecedentesFamiliares}"
+                            th:value="'OBESIDAD'" class="obesidad">
+
+                        <label for="cardio">Problemas Cardiorespiratorios</label>
+                        <input type="checkbox" th:field="${alumno.anamnesis.antecedentesFamiliares}"
+                            th:value="'CARDIORESPIRATORIOS'" class="problemascardiovasculares">
+
+                        <label for="otros">Otros</label>
+                        <input type="checkbox" th:field="${alumno.anamnesis.antecedentesFamiliares}" th:value="'OTROS'"
+                            class="problemascardiovasculares">
+
+                        <label for="ninguno">Ninguno</label>
+                        <input type="checkbox" th:field="${alumno.anamnesis.antecedentesFamiliares}"
+                            th:value="'NINGUNO'" class="problemascardiovasculares">
+
+                        <div class="observaciones">
+                            <!-- Message input-->
+                            <textarea class="form-control" id="message" placeholder="Otras indicaciones *"
+                                data-sb-validations="required"></textarea>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">Requiere de información
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <p><strong>REGISTRACION</strong></p>
+                    <label class="titulo" for="email">Email <span class="requerido"></span></label>
+                    <input type="email" class="form-control" placeholder="Email" id="inputEmail4" th:field="*{email}">
+                    <br>
+
+                    <label class="titulo" for="password">Contraseña <span class="requerido"></span></label>
+                    <input type="password" class="form-control" placeholder="Contraseña" id="inputPassword4"
+                        th:field="*{password}">
+                    <br>
+
+                    <label class="titulo" for="password2">Repita Contraseña <span class="requerido"></span></label>
+                    <input type="password" class="form-control" placeholder="Validar su Contraseña" id="inputPassword5"
+                        th:field="*{password2}">
+
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Registrarse</button>
+
+        </form>
+        <br>
+
+    </header>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+
+    <!-- js-para la opcion si/no/nn -->
+
+    <script src="/js/selector.js"></script>
+
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>

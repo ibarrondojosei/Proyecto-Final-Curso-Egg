@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- th:replace="templates/index::head" -->
+
+<head th:replace="index::head">
+    <meta charset="UTF-8">
+    <title>Libros CRUD</title>
+</head>
+
+<body>
+
+    <header th:replace="index::header"></header>
+
+
+    <div class="container">
+        <div th:if="${!lista.isEmpty()}">
+
+            <h1 th:text="${titulo}"></h1>
+                
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Profesion</th>
+                        <th scope="col">Actividad</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Seleccionar</th> <!-- sec:authorize="hasRole('ROLE_ADMIN')" -->
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="profesor: ${lista}">
+                        <td th:text="${profesor.nombre}"></td>
+                        <td th:text="${profesor.apellido}"></td>
+                        <td th:text="${profesor.profesion}"></td>
+                        <td> 
+                            <th:block th:each="actividad, iter: ${profesor.actividades}">
+                                <label th:text="${actividad.actividad}">
+                                <th:block th:if="${!iter.last}">, </th:block>
+                            </th:block>
+                        </td> 
+                        <!-- <td>
+                            <p th:each="actividad: ${profesor.actividades}" th:text="${actividad.actividad}"></p>
+                        </td> -->
+                        <td th:text="${profesor.actividades[0].descripcionActividad}"></td>
+                        <td>
+                            <a href="/" title="Seleccionar" class="btn btn-success btn-sm">Sleccionar</a>
+                        </td>
+
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:if="${lista.isEmpty()}">La lista profesores esta vacia</div>
+
+    </div>
+
+    <footer>
+        <div th:replace="index::footer">
+
+        </div>
+    </footer>
+
+</body>
+
+</html>
